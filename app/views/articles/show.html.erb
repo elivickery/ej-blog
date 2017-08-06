@@ -1,12 +1,14 @@
 <h1><%= @article.title %></h1>
 <p><%= @article.body %></p>
 
-<div>
-  <%= link_to "Edit this article", edit_article_path(@article) %>
-</div>
-<div>
-  <%= link_to "Delete this article", article_path(@article), method: :delete, data: {confirm: "Are you sure you want to delete the article?"} %>
-</div>
+<% if logged_in? %>
+  <div>
+    <%= link_to "Edit this article", edit_article_path(@article) %>
+  </div>
+  <div>
+    <%= link_to "Delete this article", article_path(@article), method: :delete, data: {confirm: "Are you sure you want to delete the article?"} %>
+  </div>
+<% end %>
 
 
 <h2>Comments (<%= @article.comments.size %>)</h2>
